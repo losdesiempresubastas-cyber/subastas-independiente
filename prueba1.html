@@ -5,6 +5,7 @@
 <title>CA INDEPENDIENTE SUBASTAS</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box;}
+body { background-color: #f4f4f4; font-family: Arial, sans-serif;}
 .barra-superior { background-color: rgb(200,4,10); position: fixed; top: 0; left: 0; width: 100%; height: 80px; display: flex; align-items: center; justify-content: space-between; padding: 0 30px; box-sizing: border-box; z-index: 1000;}
 .barra-superior nav {display: flex; gap: 30px;}
 .barra-superior a { color: white; text-decoration: none; font-family: Arial, sans-serif; font-size: 18px; padding: 10px 15px; border-radius: 5px;}
@@ -13,6 +14,44 @@
 .escudos img {width: 50px; height: 50px; object-fit: contain;}
 .escudo3 {display: flex;align-items: center;gap: 10px;}
 .escudo3 img {width: 100px; height: 100px; object-fit: contain;}
+
+/* Estilos para la sección de historia en el medio */
+.contenedor-historia {
+    max-width: 800px;
+    margin: 120px auto 50px auto; /* 120px de margen superior para que no lo tape la barra fija */
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.contenedor-historia h1 {
+    color: rgb(200,4,10);
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 3px solid rgb(200,4,10);
+    padding-bottom: 10px;
+}
+.contenedor-historia h2 {
+    color: #222;
+    font-size: 22px;
+    margin-top: 25px;
+    margin-bottom: 12px;
+}
+.contenedor-historia p {
+    color: #444;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+.destaque {
+    background-color: rgba(200,4,10,0.05);
+    border-left: 5px solid rgb(200,4,10);
+    padding: 15px;
+    font-style: italic;
+    margin: 20px 0;
+}
 </style>
 </head>
 <body>
@@ -30,6 +69,27 @@
         <a href="contacto.html">Contacto</a>
     </nav>
 </header>
+
+<!-- SECCIÓN MEDIA: HISTORIA DE INDEPENDIENTE -->
+<main class="contenedor-historia">
+    <h1>Club Atlético Independiente</h1>
+    
+    <h2>Fundación e Inicios (1905)</h2>
+    <p>El Club Atlético Independiente fue fundado formalmente el 1 de enero de 1905 por un grupo de jóvenes empleados de una tienda en Buenos Aires llamada "A la Ciudad de Londres". Al no ser integrados en el club de fútbol de la empresa, decidieron independizarse. De ahí nace su nombre histórico, mudándose poco después a la ciudad de Avellaneda, su hogar definitivo.</p>
+
+    <div class="destaque">
+        "Orgullo Nacional: El club adoptó el color rojo en su camiseta en 1907, inspirado por el Nottingham Forest de Inglaterra, equipo que maravilló a los fundadores por su estilo de juego."
+    </div>
+
+    <h2>El Rey de Copas</h2>
+    <p>Independiente se ganó a pulso el apodo del "Rey de Copas" gracias a su impresionante dominio internacional, especialmente durante las décadas de 1960 y 1970. Se convirtió en el máximo ganador de la Copa Libertadores de América, un récord que ostenta con orgullo hasta el día de hoy con 7 títulos invictos en finales.</p>
+    
+    <h2>La Época Dorada y sus Ídolos</h2>
+    <p>Por sus filas pasaron gigantes del fútbol mundial. El máximo exponente de su rica historia es Ricardo Enrique Bochini, el eterno "10" que deslumbró al continente con su juego cerebral y sus pases milimétricos. Bajo su liderazgo, junto a figuras como Daniel Bertoni y Arsenio Erico (máximo goleador del fútbol argentino), el club alcanzó la cima del mundo al vencer a la Juventus y al Liverpool en las Copas Intercontinentales.</p>
+
+    <h2>Presente e Identidad</h2>
+    <p>Hoy en día, el club mantiene viva su mística en el Estadio Libertadores de América - Ricardo Enrique Bochini. Su rica historia de buen juego ("paladar negro") y sus 18 títulos internacionales lo posicionan como uno de los gigantes indiscutidos del fútbol mundial.</p>
+</main>
     
 </body>
 </html>
