@@ -14,47 +14,28 @@ body { background-color: #f4f4f4; font-family: Arial, sans-serif;}
 .escudos img {width: 50px; height: 50px; object-fit: contain;}
 .escudo3 {display: flex;align-items: center;gap: 10px;}
 .escudo3 img {width: 100px; height: 100px; object-fit: contain;}
-
-/* Estilos para la sección de historia en el medio */
-.contenedor-historia {
-    max-width: 800px;
-    margin: 120px auto 50px auto; /* 120px de margen superior para que no lo tape la barra fija */
-    background-color: white;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-.contenedor-historia h1 {
-    color: rgb(200,4,10);
-    font-size: 32px;
-    margin-bottom: 20px;
-    text-align: center;
-    border-bottom: 3px solid rgb(200,4,10);
-    padding-bottom: 10px;
-}
-.contenedor-historia h2 {
-    color: #222;
-    font-size: 22px;
-    margin-top: 25px;
-    margin-bottom: 12px;
-}
-.contenedor-historia p {
-    color: #444;
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 15px;
-    text-align: justify;
-}
-.destaque {
-    background-color: rgba(200,4,10,0.05);
-    border-left: 5px solid rgb(200,4,10);
-    padding: 15px;
-    font-style: italic;
-    margin: 20px 0;
-}
+.contenedor-historia {max-width: 800px; margin: 120px auto 50px auto; background-color: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);}
+.contenedor-historia h1 {color: rgb(200,4,10); font-size: 32px; margin-bottom: 20px; text-align: center; border-bottom: 3px solid rgb(200,4,10); padding-bottom: 10px;}
+.contenedor-historia h2 {color: #222; font-size: 22px; margin-top: 25px; margin-bottom: 12px;}
+.contenedor-historia p {color: #444; font-size: 16px; line-height: 1.6; margin-bottom: 15px; text-align: justify;}
+.destaque {background-color: rgba(200,4,10,0.05); border-left: 5px solid rgb(200,4,10); padding: 15px; font-style: italic; margin: 20px 0;}
+.menu-flotante {position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column-reverse; align-items: center; z-index: 2000;}
+.boton-principal {width: 60px; height: 60px; border: none; border-radius: 50%; background-color: #c8102e; color: white; font-size: 25px; cursor: pointer; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);}
+.botones-secundarios {display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; opacity: 0; transform: translateY(20px); pointer-events: none; transition: 0.3s ease;}
+.botones-secundarios a {width: 130px; padding: 12px; background-color: #222; color: white; text-decoration: none; text-align: center; border-radius: 8px; font-family: Arial, sans-serif;}
+.menu-flotante:hover .botones-secundarios {opacity: 1; transform: translateY(0); pointer-events: auto;}
 </style>
 </head>
 <body>
+<div class="menu-flotante">
+    <button class="boton-principal">☰</button>
+    <div class="botones-secundarios">
+        <a href="index.html">Compra / ofertas</a>
+        <a href="historia.html">Articulos publicados</a>
+        <a href="titulos.html">Seguidos / Favoritos</a>
+        <a href="contacto.html">Tu Carrito</a>
+    </div>
+</div>
 <header class="barra-superior">
     <div class="escudos">
         <img src=".\fotos\escudo1.PNG">
@@ -63,10 +44,10 @@ body { background-color: #f4f4f4; font-family: Arial, sans-serif;}
     </div>
 
     <nav>
-        <a href="index.html">Inicio</a>
-        <a href="nosotros.html">Nosotros</a>
+        <a href="prueba.html">Inicio</a>
         <a href="servicios.html">Servicios</a>
-        <a href="contacto.html">Contacto</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="Perfil.html">Perfil</a>
     </nav>
 </header>
 
