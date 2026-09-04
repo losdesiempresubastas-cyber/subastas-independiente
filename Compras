@@ -32,7 +32,7 @@ h1 {font-size 38px; color: rgb(200,4,10);text-align: center; padding-top: 60px;}
         <a href="Compras.html">Compra / ofertas</a>
         <a href="historia.html">Articulos publicados</a>
         <a href="titulos.html">Seguidos / Favoritos</a>
-        <a href="contacto.html">Tu Carrito</a>
+        <a href="Carrito.html">Tu Carrito</a>
     </div>
 </div>
 <header class="barra-superior">
