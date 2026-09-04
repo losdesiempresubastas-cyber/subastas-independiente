@@ -5,9 +5,52 @@
 <title>CA INDEPENDIENTE SUBASTAS</title>
 <style>
 body {font-family: Arial, sans-serif; background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(fotos/Compras.PNG); background-size: cover; background-position: left; background-attachment: fixed; min-height: 100vh; background-repeat: no-repeat;}
+h1 {font-size 38px; color: rgb(200,4,10);text-align: center; padding-top: 60px;}
+
+.barra-superior { background-color: rgb(200,4,10); position: fixed; top: 0; left: 0; width: 100%; height: 80px; display: flex; align-items: center; justify-content: space-between; padding: 0 30px; box-sizing: border-box; z-index: 1000;}
+.barra-superior nav {display: flex; gap: 30px;}
+.barra-superior a { color: white; text-decoration: none; font-family: Arial, sans-serif; font-size: 18px; padding: 10px 15px; border-radius: 5px;}
+.barra-superior a:hover{background-color: #222}
+
+.escudos {display: flex;align-items: center;gap: 10px;}
+.escudos img {width: 50px; height: 50px; object-fit: contain;}
+.escudo3 {display: flex;align-items: center;gap: 10px;}
+.escudo3 img {width: 100px; height: 100px; object-fit: contain;}
+
+.menu-flotante {position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column-reverse; align-items: center; z-index: 2000;}
+.boton-principal {width: 60px; height: 60px; border: none; border-radius: 50%; background-color: #c8102e; color: white; font-size: 25px; cursor: pointer; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);}
+.botones-secundarios {display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; opacity: 0; transform: translateY(20px); pointer-events: none; transition: 0.3s ease;}
+.botones-secundarios a {width: 130px; padding: 12px; background-color: #222; color: white; text-decoration: none; text-align: center; border-radius: 8px; font-family: Arial, sans-serif;}
+.menu-flotante:hover .botones-secundarios {opacity: 1; transform: translateY(0); pointer-events: auto;}
 </style>
 </head>
 <body>
-<h1>Club Atlético Independiente</h1>
+
+<div class="menu-flotante">
+    <button class="boton-principal">☰</button>
+    <div class="botones-secundarios">
+        <a href="Compras.html">Compra / ofertas</a>
+        <a href="historia.html">Articulos publicados</a>
+        <a href="titulos.html">Seguidos / Favoritos</a>
+        <a href="contacto.html">Tu Carrito</a>
+    </div>
+</div>
+<header class="barra-superior">
+    <div class="escudos">
+        <img src=".\fotos\escudo1.PNG">
+        <img src=".\fotos\escudo2.PNG">
+        <img src=".\fotos\captura.PNG">
+    </div>
+
+    <nav>
+        <a href="prueba1.HTML">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="Perfil.html">Perfil</a>
+    </nav>
+</header>
+<h1>Club Atlético Independiente</br>TIENDA</h1>
+
 </body>
 </html>
+
