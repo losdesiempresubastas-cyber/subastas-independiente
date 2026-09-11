@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CA INDEPENDIENTE SUBASTAS - Ingresar</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box;}
+
+body {font-family: Arial, sans-serif; background-color: #f2f2f2; min-height: 100vh; display: flex; align-items: center; justify-content: center;}
+
+.caja-login {background-color: white; width: 380px; padding: 35px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);}
+
+.caja-login h1 {color: rgb(200,4,10); font-size: 24px; text-align: center; margin-bottom: 20px; border-bottom: 3px solid rgb(200,4,10); padding-bottom: 10px;}
+
+.pestañas {display: flex; margin-bottom: 20px;}
+
+.pestañas button {flex: 1; padding: 10px; border: none; background-color: #eee; cursor: pointer; font-size: 15px;}
+
+.pestañas button.activa {background-color: rgb(200,4,10); color: white;}
+
+form {display: none; flex-direction: column; gap: 12px;}
+
+form.activo {display: flex;}
+
+form input {padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;}
+
+form button[type="submit"] {margin-top: 10px; padding: 10px; background-color: rgb(200,4,10); color: white; border: none; border-radius: 5px; font-size: 15px; cursor: pointer;}
+
+form button[type="submit"]:hover {background-color: #a00308;}
+
+.mensaje {text-align: center; font-size: 13px; margin-top: 12px; min-height: 16px;}
+
+.mensaje.error {color: rgb(200,4,10);}
+
+.mensaje.ok {color: #28a745;}
+
+.descargar {display: block; text-align: center; margin-top: 15px; font-size: 12px; color: #666; cursor: pointer; text-decoration: underline;}
+</style>
+</head>
+<body>
+
+<div class="caja-login">
+  <h1>CA Independiente Subastas</h1>
+
+  <div class="pestañas">
+    <button id="btnMostrarLogin" class="activa" onclick="mostrarFormulario('login')">Iniciar sesión</button>
+    <button id="btnMostrarRegistro" onclick="mostrarFormulario('registro')">Crear cuenta</button>
+  </div>
+
+  <form id="formLogin" class="activo" onsubmit="return iniciarSesion(event)">
+    <input type="email" id="loginMail" placeholder="Mail" required>
+    <input type="password" id="loginClave" placeholder="Clave" required>
+    <button type="submit">Iniciar sesión</button>
+  </form>
+
+  <form id="formRegistro" onsubmit="return crearCuenta(event)">
+    <input type="text" id="regNombre" placeholder="Nombre" required>
+    <input type="text" id="regApellido" placeholder="Apellido" required>
+    <input type="text" id="regEdad" placeholder="Edad" required>
+    <input type="email" id="regMail" placeholder="Mail" required>
+    <input type="password" id="regClave" placeholder="Clave" required>
+    <input type="password" id="regConfirmarClave" placeholder="Confirmar clave" required>
+    <button type="submit">Crear cuenta</button>
+  </form>
+
+  <div id="mensaje" class="mensaje"></div>
+
+  <span class="descargar" onclick="descargarLogins()">Descargar archivo de cuentas (logins.txt)</span>
+</div>
+
+<script>
+
+function mostrarFormulario(cual) {
+  document.getElementById('formLogin').classList.remove('activo');
+  document.getElementById('formRegistro').classList.remove('activo');
+  document.getElementById('btnMostrarLogin').classList.remove('activa');
+  document.getElementById('btnMostrarRegistro').classList.remove('activa');
+  document.getElementById('mensaje').textContent = '';
+
+  if (cual === 'login') {
+    document.getElementById('formLogin').classList.add('activo');
+    document.getElementById('btnMostrarLogin').classList.add('activa');
+  } else {
+    document.getElementById('formRegistro').classList.add('activo');
+    document.getElementById('btnMostrarRegistro').classList.add('activa');
+  }
+}
+
+function mostrarMensaje(texto, tipo) {
+  const mensaje = document.getElementById('mensaje');
+  mensaje.textContent = texto;
+  mensaje.className = 'mensaje ' + tipo;
+}
+
+function obtenerLogins() {
+  const datos = localStorage.getItem('logins');
+  if (datos) {
+    return JSON.parse(datos);
+  }
+  return [];
+}
+
+function guardarLogins(listaLogins) {
+  localStorage.setItem('logins', JSON.stringify(listaLogins));
+}
+
+function soloLetras(texto) {
+  const regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
+  return regex.test(texto);
+}
+
+function soloNumeros(texto) {
+  const regex = /^[0-9]+$/;
+  return regex.test(texto);
+}
+
+function crearCuenta(evento) {
+  evento.preventDefault();
+
+  const nombre = document.getElementById('regNombre').value.trim();
+  const apellido = document.getElementById('regApellido').value.trim();
+  const edad = document.getElementById('regEdad').value.trim();
+  const mail = document.getElementById('regMail').value.trim();
+  const clave = document.getElementById('regClave').value;
+  const confirmarClave = document.getElementById('regConfirmarClave').value;
+
+  if (!soloLetras(nombre)) {
+    mostrarMensaje('El nombre no puede contener números.', 'error');
+    return false;
+  }
+
+  if (!soloLetras(apellido)) {
+    mostrarMensaje('El apellido no puede contener números.', 'error');
+    return false;
+  }
+
+  if (!soloNumeros(edad)) {
+    mostrarMensaje('La edad solo puede contener números.', 'error');
+    return false;
+  }
+
+  if (!mail.includes('@')) {
+    mostrarMensaje('El mail no es válido.', 'error');
+    return false;
+  }
+
+  if (clave !== confirmarClave) {
+    mostrarMensaje('Las claves no coinciden.', 'error');
+    return false;
+  }
+
+  const listaLogins = obtenerLogins();
+
+  const yaExiste = listaLogins.some(function(cuenta) {
+    return cuenta.mail === mail;
+  });
+
+  if (yaExiste) {
+    mostrarMensaje('Ya existe una cuenta con ese mail.', 'error');
+    return false;
+  }
+
+  listaLogins.push({
+    nombre: nombre,
+    apellido: apellido,
+    edad: edad,
+    mail: mail,
+    clave: clave
+  });
+
+  guardarLogins(listaLogins);
+
+  mostrarMensaje('Cuenta creada con éxito. Ya podés iniciar sesión.', 'ok');
+  document.getElementById('formRegistro').reset();
+  mostrarFormulario('login');
+
+  return false;
+}
+
+function iniciarSesion(evento) {
+  evento.preventDefault();
+
+  const mail = document.getElementById('loginMail').value.trim();
+  const clave = document.getElementById('loginClave').value;
+
+  const listaLogins = obtenerLogins();
+
+  const cuenta = listaLogins.find(function(c) {
+    return c.mail === mail && c.clave === clave;
+  });
+
+  if (cuenta) {
+    mostrarMensaje('Bienvenido/a ' + cuenta.nombre + '.', 'ok');
+    setTimeout(function() {
+      window.location.href = 'prueba1.html';
+    }, 1000);
+  } else {
+    mostrarMensaje('Mail o clave incorrectos.', 'error');
+  }
+
+  return false;
+}
+
+function descargarLogins() {
+  const listaLogins = obtenerLogins();
+
+  if (listaLogins.length === 0) {
+    mostrarMensaje('Todavía no hay cuentas guardadas.', 'error');
+    return;
+  }
+
+  let contenido = '';
+  listaLogins.forEach(function(cuenta) {
+    contenido += 'Nombre: ' + cuenta.nombre + '\n';
+    contenido += 'Apellido: ' + cuenta.apellido + '\n';
+    contenido += 'Edad: ' + cuenta.edad + '\n';
+    contenido += 'Mail: ' + cuenta.mail + '\n';
+    contenido += 'Clave: ' + cuenta.clave + '\n';
+    contenido += '-----------------------------\n';
+  });
+
+  const archivo = new Blob([contenido], { type: 'text/plain' });
+  const enlace = document.createElement('a');
+  enlace.href = URL.createObjectURL(archivo);
+  enlace.download = 'logins.txt';
+  enlace.click();
+}
+
+</script>
+
+</body>
+</html>
