@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CA INDEPENDIENTE SUBASTAS - Perfil</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.volver {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: rgb(200,4,10);
+  color: white;
+  padding: 8px 12px;
+  text-decoration: none;
+}
+
+.caja {
+  background-color: white;
+  width: 350px;
+  margin: 100px auto;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.caja h1 {
+  color: rgb(200,4,10);
+  font-size: 22px;
+  text-align: center;
+}
+
+.dato {
+  margin-top: 15px;
+}
+
+.dato b {
+  display: block;
+}
+
+button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 20px;
+  background-color: rgb(200,4,10);
+  color: white;
+  border: none;
+}
+</style>
+</head>
+<body>
+
+<a href="prueba1.html" class="volver">Menu principal</a>
+
+<div class="caja">
+  <h1>Mi Perfil</h1>
+
+  <div id="datos"></div>
+
+  <button onclick="cerrarSesion()">Cerrar sesión</button>
+</div>
+
+<script>
+
+var mail = localStorage.getItem('sesionActiva');
+var listaUsuarios = localStorage.getItem('logins');
+
+if (mail == null || listaUsuarios == null) {
+
+  document.getElementById('datos').innerHTML = 'No hay ninguna sesion iniciada. <a href="login.html">Iniciar sesion</a>';
+
+} else {
+
+  listaUsuarios = JSON.parse(listaUsuarios);
+  var usuario = null;
+
+  for (var i = 0; i < listaUsuarios.length; i++) {
+    if (listaUsuarios[i].mail == mail) {
+      usuario = listaUsuarios[i];
+    }
+  }
+
+  if (usuario == null) {
+    document.getElementById('datos').innerHTML = 'No se encontro la cuenta. <a href="login.html">Iniciar sesion</a>';
+  } else {
+    document.getElementById('datos').innerHTML =
+      '<div class="dato"><b>Nombre</b>' + usuario.nombre + '</div>' +
+      '<div class="dato"><b>Apellido</b>' + usuario.apellido + '</div>' +
+      '<div class="dato"><b>Edad</b>' + usuario.edad + '</div>' +
+      '<div class="dato"><b>Mail</b>' + usuario.mail + '</div>' +
+      '<div class="dato"><b>Clave</b>' + usuario.clave + '</div>';
+  }
+
+}
+
+function cerrarSesion() {
+  localStorage.removeItem('sesionActiva');
+  window.location.href = 'login.html';
+}
+
+</script>
+
+</body>
+</html>
