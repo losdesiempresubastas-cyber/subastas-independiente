@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <title>CA INDEPENDIENTE SUBASTAS</title>
 <style>
-body {font-family: Arial, sans-serif; background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(fotos/Compras.PNG); background-size: cover; background-position: left; background-attachment: fixed; min-height: 100vh; background-repeat: no-repeat;}
-h1 {font-size: 38px; color: rgb(200,4,10);text-align: center; padding-top: 60px;}
+body {font-family: Arial, sans-serif; background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(fotos/Compras.PNG); background-size: cover; background-position: left; background-attachment: fixed; min-height: 100vh; background-repeat: no-repeat; margin: 0;}
+h1 {font-size: 38px; color: rgb(200,4,10);text-align: center; padding-top: 100px;}
 
 .barra-superior { background-color: rgb(200,4,10); position: fixed; top: 0; left: 0; width: 100%; height: 80px; display: flex; align-items: center; justify-content: space-between; padding: 0 30px; box-sizing: border-box; z-index: 1000;}
 .barra-superior nav {display: flex; gap: 30px;}
@@ -19,7 +19,7 @@ h1 {font-size: 38px; color: rgb(200,4,10);text-align: center; padding-top: 60px;
 .menu-flotante {position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column-reverse; align-items: center; z-index: 2000;}
 .boton-principal {position: relative; width: 60px; height: 60px; border: none; border-radius: 50%; background-color: #c8102e; color: white; font-size: 25px; cursor: pointer; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);}
 .botones-secundarios {display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; opacity: 0; transform: translateY(20px); pointer-events: none; transition: 0.3s ease;}
-.botones-secundarios a, .botones-secundarios .carrito-preview {width: 160px; padding: 12px; background-color: #222; color: white; text-decoration: none; text-align: center; border-radius: 8px; font-family: Arial, sans-serif; box-sizing: border-box;}
+.botones-secundarios a, .botones-secundarios .carrito-preview {width: 180px; padding: 12px; background-color: #222; color: white; text-decoration: none; text-align: center; border-radius: 8px; font-family: Arial, sans-serif; box-sizing: border-box;}
 .menu-flotante:hover .botones-secundarios {opacity: 1; transform: translateY(0); pointer-events: auto;}
 
 /* Globo indicador de cantidad de artículos */
@@ -27,7 +27,7 @@ h1 {font-size: 38px; color: rgb(200,4,10);text-align: center; padding-top: 60px;
 
 /* Vista rápida de productos dentro del menú */
 .carrito-preview { font-size: 13px; border-top: 2px solid #c8102e; background-color: #111 !important; text-align: left !important; max-height: 150px; overflow-y: auto;}
-.item-carrito { margin-bottom: 5px; border-bottom: 1px dashed #444; padding-bottom: 5px; }
+.item-carrito { margin-bottom: 5px; border-bottom: 1px dashed #444; padding-bottom: 5px; color: white; }
 
 /* --- SECCIÓN DE PRODUCTOS EN GRIDEADO FLEX --- */
 .contenedor-imagenes {
@@ -79,29 +79,28 @@ h1 {font-size: 38px; color: rgb(200,4,10);text-align: center; padding-top: 60px;
 </head>
 <body>
 
+<!-- Menú Flotante Lateral -->
 <div class="menu-flotante">
     <button class="boton-principal">
-        ☰
+        🛒
         <span class="contador-carrito" id="num-articulos">0</span>
     </button>
     <div class="botones-secundarios">
         <div class="carrito-preview" id="lista-vista-rapida">
-            <i>Carrito vacío</i>
-       <div class="menu-flotante">
-        <button class="boton-principal">☰</button>
-        <div class="botones-secundarios">
-            <a href="Compras.html">Compra / ofertas</a>
-             <a href="articulos_publicados.html">Articulos publicados</a>
-            <a href="Favoritos.html">Seguidos / Favoritos</a>
+            <i style="color: #aaa; display: block; text-align: center;">Carrito vacío</i>
         </div>
+        <a href="Compras.html">Compra / ofertas</a>
+        <a href="articulos_publicados.html">Artículos publicados</a>
+        <a href="Favoritos.html">Seguidos / Favoritos</a>
     </div>
 </div>
 
+<!-- Barra de Navegación Superior -->
 <header class="barra-superior">
     <div class="escudos">
-        <img src="fotos/escudo1.PNG">
-        <img src="fotos/escudo2.PNG">
-        <img src="fotos/captura.PNG">
+        <img src="fotos/escudo1.PNG" alt="Escudo 1">
+        <img src="fotos/escudo2.PNG" alt="Escudo 2">
+        <img src="fotos/captura.PNG" alt="Captura">
     </div>
     <nav>
         <a href="prueba1.HTML">Inicio</a>
@@ -120,15 +119,15 @@ h1 {font-size: 38px; color: rgb(200,4,10);text-align: center; padding-top: 60px;
     <div class="tarjeta-producto">
         <img src="fotos/CAMPERA.jpg" alt="Campera 1">
         <h3>Campera 1</h3>
-        <div class="precio">$149.999</div>
+        <div class="precio">\$149.999</div>
         <button class="btn-agregar" onclick="agregarAlCarrito('Campera 1', 149999)">Agregar al carrito</button>
     </div>
 
-    <!-- Producto 2 -->	
+    <!-- Producto 2 --> 
     <div class="tarjeta-producto">
         <img src="fotos/CAMPERA2.jpg" alt="Campera 2">
         <h3>Campera 2</h3>
-        <div class="precio">$179.999</div>
+        <div class="precio">\$179.999</div>
         <button class="btn-agregar" onclick="agregarAlCarrito('Campera 2', 179999)">Agregar al carrito</button>
     </div>
 
@@ -136,7 +135,7 @@ h1 {font-size: 38px; color: rgb(200,4,10);text-align: center; padding-top: 60px;
     <div class="tarjeta-producto">
         <img src="fotos/CAMPERA3.jpg" alt="Campera 3">
         <h3>Campera 3</h3>
-        <div class="precio">$165.000</div>
+        <div class="precio">\$165.000</div>
         <button class="btn-agregar" onclick="agregarAlCarrito('Campera 3', 165000)">Agregar al carrito</button>
     </div>
 
@@ -144,15 +143,15 @@ h1 {font-size: 38px; color: rgb(200,4,10);text-align: center; padding-top: 60px;
     <div class="tarjeta-producto">
         <img src="fotos/CAMPERON.jpg" alt="Camperón 1">
         <h3>Camperón 1</h3>
-        <div class="precio">$165.000</div>
-        <button class="btn-agregar" onclick="agregarAlCarrito('Camperón 1', 165000)">Agregar al carrito</button>
+        <div class="precio">\$165.000</div>
+        <button class="btn-agregar" onclick="always_agregar('Camperón 1', 165000)" class="btn-agregar" onclick="agregarAlCarrito('Camperón 1', 165000)">Agregar al carrito</button>
     </div>
 
     <!-- Producto 5 -->
     <div class="tarjeta-producto">
         <img src="fotos/CAMPERON2.jpg" alt="Camperón 2">
         <h3>Camperón 2</h3>
-        <div class="precio">$165.000</div>
+        <div class="precio">\$165.000</div>
         <button class="btn-agregar" onclick="agregarAlCarrito('Camperón 2', 165000)">Agregar al carrito</button>
     </div>
 
@@ -160,7 +159,7 @@ h1 {font-size: 38px; color: rgb(200,4,10);text-align: center; padding-top: 60px;
     <div class="tarjeta-producto">
         <img src="fotos/REMERA1.jpg" alt="Remera 1">
         <h3>Remera 1</h3>
-        <div class="precio">$165.000</div>
+        <div class="precio">\$165.000</div>
         <button class="btn-agregar" onclick="agregarAlCarrito('Remera 1', 165000)">Agregar al carrito</button>
     </div>
 
@@ -168,7 +167,7 @@ h1 {font-size: 38px; color: rgb(200,4,10);text-align: center; padding-top: 60px;
     <div class="tarjeta-producto">
         <img src="fotos/REMERA2.jpg" alt="Remera 2">
         <h3>Remera 2</h3>
-        <div class="precio">$165.000</div>
+        <div class="precio">\$165.000</div>
         <button class="btn-agregar" onclick="agregarAlCarrito('Remera 2', 165000)">Agregar al carrito</button>
     </div>
 
@@ -176,7 +175,7 @@ h1 {font-size: 38px; color: rgb(200,4,10);text-align: center; padding-top: 60px;
     <div class="tarjeta-producto">
         <img src="fotos/REMERA3.jpg" alt="Remera 3">
         <h3>Remera 3</h3>
-        <div class="precio">$165.000</div>
+        <div class="precio">\$165.000</div>
         <button class="btn-agregar" onclick="agregarAlCarrito('Remera 3', 165000)">Agregar al carrito</button>
     </div>
 
@@ -184,14 +183,43 @@ h1 {font-size: 38px; color: rgb(200,4,10);text-align: center; padding-top: 60px;
     <div class="tarjeta-producto">
         <img src="fotos/REMERA4.jpg" alt="Remera 4">
         <h3>Remera 4</h3>
-        <div class="precio">$165.000</div>
+        <div class="precio">\$165.000</div>
         <button class="btn-agregar" onclick="agregarAlCarrito('Remera 4', 165000)">Agregar al carrito</button>
     </div>
 
 </div>
 
-</body>
-</html>
+<!-- --- LÓGICA DE JAVASCRIPT --- -->
+<script>
+// Arreglo global para almacenar los productos añadidos
+let carrito = [];
+
+function agregarAlCarrito(nombre, precio) {
+    // 1. Añadir el objeto al arreglo
+    carrito.push({ nombre: nombre, precio: precio });
+    
+    // 2. Actualizar el contador visual
+    document.getElementById('num-articulos').innerText = carrito.length;
+    
+    // 3. Actualizar la vista rápida del menú lateral
+    actualizarVistaRapida();
+}
+
+function actualizarVistaRapida() {
+    const contenedorLista = document.getElementById('lista-vista-rapida');
+    
+    // Limpiar el contenedor
+    contenedorLista.innerHTML = '';
+    
+    // Generar las filas de los productos agregados
+    carrito.forEach(producto => {
+        const item = document.createElement('div');
+        item.classList.add('item-carrito');
+        item.innerText = `${producto.nombre} - $${producto.precio.toLocaleString('es-AR')}`;
+        contenedorLista.appendChild(item);
+    });
+}
+</script>
 
 </body>
 </html>
