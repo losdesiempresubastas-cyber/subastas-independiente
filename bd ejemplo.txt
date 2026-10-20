@@ -1,0 +1,31 @@
+
+1. Tabla: usuarios
+
+Guarda la información de la cuenta.
+• id: INT AUTO_INCREMENT PRIMARY KEY (Identificador único).
+• nombre: VARCHAR(50) (Se amplió el límite por nombres compuestos).
+• apellido: VARCHAR(50).
+• fecha_nacimiento: DATE (Mejor que la edad fija).
+• mail: VARCHAR(100) UNIQUE (El UNIQUE evita que se registren dos cuentas con el mismo correo).
+• clave: VARCHAR(255) (Espacio de sobra para la contraseña encriptada).
+
+2. Tabla: productos (Tus "publicados")
+
+Guarda los artículos que se venden.
+• id: INT AUTO_INCREMENT PRIMARY KEY.
+• id_usuario: INT (Clave foránea que conecta con usuarios.id).
+• nombre: VARCHAR(100).
+• precio: DECIMAL(10,2) (Mejor que INT o FLOAT para manejar dinero con centavos exactos).
+
+3. Tabla: carrito
+
+Relaciona qué productos tiene guardados cada usuario para comprar.
+• id_usuario: INT (Clave foránea).
+• id_producto: INT (Clave foránea).
+• cantidad: INT (Para saber cuántas unidades quiere de ese producto).
+
+4. Tabla: favoritos
+
+Relaciona los productos que le gustan a cada usuario.
+• id_usuario: INT (Clave foránea).
+• id_producto: INT (Clave foránea).
